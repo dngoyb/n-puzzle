@@ -54,6 +54,7 @@ void                ft_penqueue(t_queue *q, t_node *node, int prty);
 t_node              *dequeue(t_queue *q);
 int                 manhattan(int **grid, int **final, int size);
 int                 missplaced(int **initial, int **final, int size);
+int                 linearconflict(int **grid, int **final, int size);
 
 int                 compare_grids(int **a, int **b, int size);
 

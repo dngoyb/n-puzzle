@@ -35,6 +35,15 @@ int		manhattan(int **grid, int **final, int size)
     return (comp);
 }
 
+int		linearconflict(int **grid, int **final, int size)
+{
+    (void)grid;
+    (void)final;
+    (void)size;
+    printf("Requested a non existing heurastics\n");
+    return (0);
+}
+
 int     missplaced(int **initial, int **final, int size)
 {
     int count = 0;

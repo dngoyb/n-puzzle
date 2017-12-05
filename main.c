@@ -83,14 +83,14 @@ int     cost_h(int **grid, int **final, int type, int size)
     int cost;
 
     cost = 0;
-    if (type == 0)
+    if (type <= 0 || type > 2)
            cost = manhattan(grid, final, size);
     else
     {
         if (type == 1)
             cost = missplaced(grid, final, size);
 		else
-			cost = manhattan(grid, final, size);
+			cost = linearconflict(grid, final, size);
     }
     return (cost);
 }
