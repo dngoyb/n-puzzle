@@ -12,6 +12,10 @@
 
 #include "npuzzle.h"
 
+/*
+** Counts the number of inversions
+*/
+
 static int	ft_inversions(int *matrix, int size)
 {
 	int inv_count;
@@ -23,6 +27,10 @@ static int	ft_inversions(int *matrix, int size)
 				inv_count++;
 	return (inv_count);
 }
+
+/*
+** It is not possible to solve an instance of 8 puzzle if number of inversions is even in the input state
+*/
 
 int			ft_solvable(int **matrix, int size)
 {
