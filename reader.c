@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reader.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/05 11:45:24 by ttshivhu          #+#    #+#             */
+/*   Updated: 2017/12/05 11:54:27 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
 static void		check_empty_pos(int **matrix, int size, int *x, int *y)
@@ -29,7 +41,9 @@ int				**read_file(int *size, char *file, int *ix, int *iy)
     int			fd;
     int			**ret;
     char 		**spl;
+	int			errors;
 
+	errors = 0;
     fd = open(file, O_RDONLY);
     i = 0;
     k = 0;
@@ -38,11 +52,14 @@ int				**read_file(int *size, char *file, int *ix, int *iy)
     {
         while (get_next_line(fd, &temp))
         {
+			if (i == *size + 1)
+				break ;
 			if (temp[0] == '#')
 				continue ;
             if (i == 0)
             {
                 *size = ft_atoi(temp);
+				errors = (*size < 3) ? 1 : 0;
                 ret = (int **)malloc(sizeof(int *) * (*size));
                 for (i = 0; i < *size; i++)
                     ret[i] = malloc(sizeof(int));
@@ -53,12 +70,22 @@ int				**read_file(int *size, char *file, int *ix, int *iy)
                 j = -1;
                 spl = ft_strsplit(temp, ' ');
                 while (++j < *size)
-					ret[k][j] = ft_atoi(spl[j]);
+				{
+					if (!spl[j])
+						errors++;
+					else
+						ret[k][j] = ft_atoi(spl[j]);
+				}
                 k++;
             }
             i++;
         }
 		check_empty_pos(ret, *size, ix, iy);
+	}
+	if (errors)
+	{
+		printf("Error in the puzzle\n");
+		exit(1);
 	}
 	return (ret);
 }

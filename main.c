@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:20:23 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 09:44:30 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:19:29 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int     cost_h(int **grid, int **final, int type, int size)
     {
         if (type == 1)
             cost = missplaced(grid, final, size);
+		else
+			cost = manhattan(grid, final, size);
     }
     return (cost);
 }
@@ -106,10 +108,7 @@ int main(int c, char **av)
     size = 3;
     initial = NULL;
     if (c >= 2 && c <= 3)
-    {
         initial = (c == 2) ? read_file(&size, av[1], &g_x, &g_y) : read_file(&size, av[2], &g_x, &g_y);
-        size = size ? size : 3;
-    }
     type = (c == 3) ? ft_atoi(ft_strchr(av[1], 'h') + 1) : 0;
     final = get_goal(size);
     if (!ft_solvable(initial, size))
