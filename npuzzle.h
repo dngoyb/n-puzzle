@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 09:51:37 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2017/12/05 11:59:24 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@ typedef struct      s_closed
     int             **matrix;
     struct s_closed *next;
 }                   t_closed;
-
-typedef struct      s_puzzle
-{
-    t_queue         *queue;
-    t_queue         *queue1;
-    t_node          *child;
-    t_node          *child1;
-    int             g_x;
-    int             g_y;
-    int             size;
-}                   t_puzzle;
 
 t_queue             init();
 int                 isEmpty(t_queue *q);
