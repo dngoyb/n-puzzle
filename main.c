@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/05 09:20:23 by ttshivhu          #+#    #+#             */
+/*   Updated: 2017/12/05 09:44:30 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
-void    ft_swap(int *a, int *b)
+void		ft_swap(int *a, int *b)
 {
     int tmp;
 
@@ -9,12 +21,10 @@ void    ft_swap(int *a, int *b)
     *b = tmp;
 }
 
-int printMatrix(int **mat, int cost, int size)
+int			printMatrix(int **mat, int size)
 {
     static int move = 0;
 
-    printf("\033[2J");
-    printf("\033[%d;%dH", 0, 0);
 	printf("-----------\n");
     for (int i = 0; i < size; i++)
     {
@@ -28,51 +38,41 @@ int printMatrix(int **mat, int cost, int size)
         printf("\n");
     }
     printf("-----------\nMove: %5d\n", move++);
-    usleep(350000);
     return (0);
 }
 
-void printPath(t_node *root, int size)
+void 		printPath(t_node *root, int size)
 {
     if (root == NULL)
         return ;
     printPath(root->parent, size);
-    printMatrix(root->matrix, root->cost, size);
+    printMatrix(root->matrix, size);
 }
 
-// botton, left, top, right
-int row[] = { 1, 0, -1, 0 };
-int col[] = { 0, -1, 0, 1 };
+int row[] = {1, 0, -1, 0};
+int col[] = {0, -1, 0, 1};
 
-int isSafe(int x, int y, int size)
+int			isSafe(int x, int y, int size)
 {
     return (x >= 0 && x < size && y >= 0 && y < size);
 }
 
-t_node  *new_item(int **mat, int x, int y, int nx, int ny, int level, t_node *parent, int size)
+t_node		*new_item(int **mat, int x, int y, int nx, int ny, int level, t_node *parent, int size)
 {
-    t_node *node;
-    int     **tmp;
-    char *cp;
+	t_node		*node;
 
     node = (t_node *)malloc(sizeof(t_node));
     node->parent = parent;
     node->matrix = (int **)malloc(sizeof(int *) * size);
 
     for (int i=0; i < size; i++)
-    {
-        node->matrix[i] = malloc(sizeof(int));
-    }
+		node->matrix[i] = malloc(sizeof(int));
 
     for (int y = 0; y < size; y++)
     {
         for (int x = 0; x < size; x++)
-        {
-            node->matrix[y][x] = mat[y][x];
-        }
+			node->matrix[y][x] = mat[y][x];
     }
-
-    
     if (node)
         ft_swap(&(node->matrix[x][y]), &(node->matrix[nx][ny]));
     node->level = level;
@@ -123,7 +123,7 @@ int main(int c, char **av)
 		//	printf("iter: %d\n", iter);
             break ;
         }
-        push(&close, min->matrix, cost_h(min->matrix, final, size), size);
+        push(&close, min->matrix, size);
         for (int i = 0; i < 4; i++)
         {
             if (isSafe(min->x + row[i], min->y + col[i], size))

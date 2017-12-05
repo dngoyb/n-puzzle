@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   npuzzle.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
+/*   Updated: 2017/12/05 09:45:31 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef NPUZZLE_H
 # define NPUZZLE_H
 
@@ -56,7 +68,7 @@ int                 missplaced(int **initial, int **final, int size);
 
 int                 compare_grids(int **a, int **b, int size);
 
-void                push(t_closed **head, int **matrix, int priority, int size);
+void                push(t_closed **head, int **matrix, int size);
 int                 closed(t_closed *head, int **grid, int size);
 int                 **read_file(int *size, char *file, int *ix, int *iy);
 
