@@ -48,8 +48,8 @@ typedef struct      s_closed
 }                   t_closed;
 
 t_queue             init();
-int                 isEmpty(t_queue *q);
-void                pEnqueue(t_queue *q, t_node *node, int prty);
+int                 ft_is_empty(t_queue *q);
+void                ft_penqueue(t_queue *q, t_node *node, int prty);
 t_node              *dequeue(t_queue *q);
 int                 manhattan(int **grid, int **final, int size);
 int                 missplaced(int **initial, int **final, int size);

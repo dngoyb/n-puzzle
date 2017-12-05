@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-int			isEmpty(t_queue *q)
+int			ft_is_empty(t_queue *q)
 {
 	return (q->top == NULL);
 }
@@ -26,14 +26,14 @@ t_queue		init()
     return (*tmp);
 }
 
-void		pEnqueue(t_queue *q, t_node *node, int prty)
+void		ft_penqueue(t_queue *q, t_node *node, int prty)
 {
     t_qnode *newNode = malloc(sizeof(t_qnode));
     newNode->node = node;
     newNode->next = NULL;
     newNode->priority = prty;
 
-    if (isEmpty(q))
+    if (ft_is_empty(q))
         q->top = newNode;
     else
     {
@@ -54,7 +54,7 @@ void		pEnqueue(t_queue *q, t_node *node, int prty)
 
 t_node		*dequeue(t_queue *q)
 {
-	if (isEmpty(q))
+	if (ft_is_empty(q))
 		return (NULL);
     t_qnode *temp = q->top;
     t_node *tempNum = q->top->node;

@@ -22,8 +22,8 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
     int col[] = {0, -1, 0, 1};
 
     queue = init();
-    pEnqueue(&queue, i_node, i_node->cost);
-    while (!isEmpty(&queue))
+    ft_penqueue(&queue, i_node, i_node->cost);
+    while (!ft_is_empty(&queue))
     {
         min = dequeue(&queue);
         if (min->cost == 0)
@@ -42,7 +42,7 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
                                       min->level + 1, min, size);
                 child->cost = cost_h(child->matrix, final, type, size);
                 if (!closed(close, child->matrix, size))
-                    pEnqueue(&queue, child, child->cost + min->level);
+                    ft_penqueue(&queue, child, child->cost + min->level);
             }
         }
     }
