@@ -12,6 +12,14 @@
 
 #include "npuzzle.h"
 
+/*
+** Takes final(goal) state and a node to first state, then adds it to the queue
+** then take the top element in the queue and then create childrens for each node
+** add all the nodes with a low cost on top of the queue, do this until you reach
+** a node with 0 cost(solved state)... Add all evaluated nodes to closed set
+** during the process to avoid visiting same node twice...
+*/
+
 void        astar_algo(int **final, t_node *i_node, int size, int type)
 {
     t_node  *min;
