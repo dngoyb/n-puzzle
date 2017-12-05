@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
+# include <time.h>
 # include "get_next_line.h"
 
 typedef struct      s_node
@@ -69,5 +70,8 @@ void 		        ft_constract_path(t_node *root, int size);
 int			        ft_issafe(int x, int y, int size);
 int                 cost_h(int **grid, int **final, int type, int size);
 t_node              *new_item(int **mat, int x, int y, int nx, int ny, int level, t_node *parent, int size);
+void                ft_swap(int *a, int *b);
+int                 **random_puzzle(int *size, int *ix, int *iy);
+void                check_empty_pos(int **matrix, int size, int *x, int *y);
 
 #endif

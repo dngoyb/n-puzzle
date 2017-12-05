@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:20:23 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 11:19:29 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2017/12/05 12:50:05 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			printMatrix(int **mat, int size)
 {
     static int move = 0;
 
-	printf("-----------\n");
+	//printf("-----------\n");
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -111,6 +111,7 @@ int main(int c, char **av)
         initial = (c == 2) ? read_file(&size, av[1], &g_x, &g_y) : read_file(&size, av[2], &g_x, &g_y);
     type = (c == 3) ? ft_atoi(ft_strchr(av[1], 'h') + 1) : 0;
     final = get_goal(size);
+    initial = (initial) ? initial : random_puzzle(&size, &g_x, &g_y);
     if (!ft_solvable(initial, size))
     {
         printf("Board is not solvable\n");

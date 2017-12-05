@@ -12,7 +12,7 @@
 
 #include "npuzzle.h"
 
-static void		check_empty_pos(int **matrix, int size, int *x, int *y)
+void			check_empty_pos(int **matrix, int size, int *x, int *y)
 {
 	int		i;
 	int		j;
