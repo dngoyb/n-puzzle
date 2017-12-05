@@ -75,4 +75,10 @@ int                 **get_goal(int n);
 void                copy_array(int ***dest, int **src, int size);
 int                 ft_solvable(int **matrix, int size);
 
+void                astar_algo(int **final, t_node *i_node, int size, int type);
+void 		        ft_constract_path(t_node *root, int size);
+int			        ft_issafe(int x, int y, int size);
+int                 cost_h(int **grid, int **final, int type, int size);
+t_node              *new_item(int **mat, int x, int y, int nx, int ny, int level, t_node *parent, int size);
+
 #endif

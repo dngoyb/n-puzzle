@@ -12,7 +12,7 @@
 
 NAME = npuzzle
 
-SRC = main.c solvable.c reader.c goal.c get_next_line.c list.c heuristics.c queue.c utils.c \
+SRC = main.c solvable.c astar_algo.c reader.c goal.c get_next_line.c list.c heuristics.c queue.c utils.c \
 
 FLAG = -g3 -Wall -Werror -Wextra
 

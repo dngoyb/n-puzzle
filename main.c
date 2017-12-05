@@ -41,18 +41,15 @@ int			printMatrix(int **mat, int size)
     return (0);
 }
 
-void 		printPath(t_node *root, int size)
+void 		ft_constract_path(t_node *root, int size)
 {
     if (root == NULL)
         return ;
-    printPath(root->parent, size);
+    ft_constract_path(root->parent, size);
     printMatrix(root->matrix, size);
 }
 
-int row[] = {1, 0, -1, 0};
-int col[] = {0, -1, 0, 1};
-
-int			isSafe(int x, int y, int size)
+int			ft_issafe(int x, int y, int size)
 {
     return (x >= 0 && x < size && y >= 0 && y < size);
 }
@@ -81,32 +78,39 @@ t_node		*new_item(int **mat, int x, int y, int nx, int ny, int level, t_node *pa
     return (node);
 }
 
-int     cost_h(int **grid, int **final, int size)
+int     cost_h(int **grid, int **final, int type, int size)
 {
     int cost;
 
-   	cost = manhattan(grid, final, size);
-    //cost = missplaced(grid, final, size);
-    //printf("the cost is %d\n", cost);
+    cost = 0;
+    if (!type)
+           cost = manhattan(grid, final, size);
+    else
+    {
+        if (type == 1)
+            cost = missplaced(grid, final, size);
+    }
     return (cost);
 }
 
 int main(int c, char **av)
 {
-    t_queue queue;
+    int     **final;
+    int     **initial;
     t_node  *node;
-    t_node  *min;
-    t_node  *child;
-    t_closed    *close = NULL;
-    int iter = 0;
-    int **final;
-    int **initial;
-    int size;
-    int g_x;
-    int g_y;
+    int     size;
+    int     g_x;
+    int     g_y;
+    int     type;
 
-    (void)c;
-    initial = read_file(&size, av[1], &g_x, &g_y);
+    size = 0;
+    initial = NULL;
+    if (c >= 2 && c <= 3)
+    {
+        initial = (c == 2) ? read_file(&size, av[1], &g_x, &g_y) : read_file(&size, av[2], &g_x, &g_y);
+        size = size ? size : 3;
+    }
+    type = (c == 3) ? ft_atoi(ft_strchr(av[1], 'h') + 1) : 0;
     final = get_goal(size);
     if (!ft_solvable(initial, size))
     {
@@ -114,36 +118,7 @@ int main(int c, char **av)
         exit(1);
     }
     node = new_item(initial, g_x, g_y, g_x, g_y, 0, NULL, size);
-
-    queue = init();
-    node->cost = cost_h(initial, final, size);
-    pEnqueue(&queue, node, node->cost);
-
-    while (!isEmpty(&queue))
-    {
-		iter++;
-        min = dequeue(&queue);
-        if (min->cost == 0)
-        {
-            printPath(min, size);
-		//	printf("iter: %d\n", iter);
-            break ;
-        }
-        push(&close, min->matrix, size);
-        for (int i = 0; i < 4; i++)
-        {
-            if (isSafe(min->x + row[i], min->y + col[i], size))
-            {
-                child = new_item(min->matrix, min->x,
-                                      min->y, min->x + row[i],
-                                      min->y + col[i],
-                                      min->level + 1, min, size);
-                child->cost = cost_h(child->matrix, final, size);
-
-                if (!closed(close, child->matrix, size))
-                    pEnqueue(&queue, child, child->cost + min->level);
-            }
-        }
-    }
+    node->cost = cost_h(initial, final, type, size);
+    astar_algo(final, node, size, type);
     return (0);
 }
