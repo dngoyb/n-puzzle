@@ -83,7 +83,7 @@ int     cost_h(int **grid, int **final, int type, int size)
     int cost;
 
     cost = 0;
-    if (!type)
+    if (type == 0)
            cost = manhattan(grid, final, size);
     else
     {
@@ -103,7 +103,7 @@ int main(int c, char **av)
     int     g_y;
     int     type;
 
-    size = 0;
+    size = 3;
     initial = NULL;
     if (c >= 2 && c <= 3)
     {

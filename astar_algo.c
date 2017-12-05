@@ -40,7 +40,7 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
                                       min->y, min->x + row[i],
                                       min->y + col[i],
                                       min->level + 1, min, size);
-                child->cost = cost_h(child->matrix, final, size, type);
+                child->cost = cost_h(child->matrix, final, type, size);
                 if (!closed(close, child->matrix, size))
                     pEnqueue(&queue, child, child->cost + min->level);
             }
