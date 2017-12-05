@@ -29,7 +29,8 @@ static int	ft_inversions(int *matrix, int size)
 }
 
 /*
-** It is not possible to solve an instance of 8 puzzle if number of inversions is even in the input state
+** It is not possible to solve an instance of 8(15 etc) puzzle
+** if number of inversions is even in the input state
 */
 
 int			ft_solvable(int **matrix, int size)
