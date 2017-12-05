@@ -12,6 +12,10 @@
 
 #include "npuzzle.h"
 
+/*
+** I have to generate a random puzzle that will be ran in case a puzzle file is missing
+*/
+
 int        **random_puzzle(int *size, int *ix, int *iy)
 {
     int     **puzzle;
