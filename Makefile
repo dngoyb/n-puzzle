@@ -6,7 +6,7 @@
 #    By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 08:51:22 by ttshivhu          #+#    #+#              #
-#    Updated: 2017/12/05 10:10:59 by ttshivhu         ###   ########.fr        #
+#    Updated: 2017/12/05 14:43:52 by ttshivhu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ $(NAME):
 	@make -C libft $(SILENT)
 	@gcc $(FLAG) -c $(SRC)
 	@gcc $(FLAG) $(OBJ)  libft/libft.a -lreadline -o $(NAME)
-	@printf "\x1b[32mCompiled $(NAME) 👍\x1b[0m\n"
+	@printf "\x1b[32mCompiled $(NAME)\x1b[0m\n"
 
 clean:
 	@make clean -C libft $(SILENT)
