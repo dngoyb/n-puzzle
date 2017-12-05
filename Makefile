@@ -6,13 +6,13 @@
 #    By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/05 08:51:22 by ttshivhu          #+#    #+#              #
-#    Updated: 2017/12/05 09:22:19 by ttshivhu         ###   ########.fr        #
+#    Updated: 2017/12/05 10:10:59 by ttshivhu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = npuzzle
 
-SRC = main.c reader.c goal.c get_next_line.c list.c heuristics.c queue.c utils.c \
+SRC = main.c solvable.c reader.c goal.c get_next_line.c list.c heuristics.c queue.c utils.c \
 
 FLAG = -g3 -Wall -Werror -Wextra
 

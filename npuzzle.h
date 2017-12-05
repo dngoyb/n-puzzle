@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 09:45:31 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2017/12/05 09:51:37 by ttshivhu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ typedef struct      s_queue
 typedef struct      s_closed
 {
     int             **matrix;
-    //int             priority;
     struct s_closed *next;
 }                   t_closed;
 
@@ -74,5 +73,6 @@ int                 **read_file(int *size, char *file, int *ix, int *iy);
 
 int                 **get_goal(int n);
 void                copy_array(int ***dest, int **src, int size);
+int                 ft_solvable(int **matrix, int size);
 
 #endif

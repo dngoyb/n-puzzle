@@ -105,8 +105,14 @@ int main(int c, char **av)
     int g_x;
     int g_y;
 
+    (void)c;
     initial = read_file(&size, av[1], &g_x, &g_y);
     final = get_goal(size);
+    if (!ft_solvable(initial, size))
+    {
+        printf("Board is not solvable\n");
+        exit(1);
+    }
     node = new_item(initial, g_x, g_y, g_x, g_y, 0, NULL, size);
 
     queue = init();

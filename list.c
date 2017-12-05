@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/12/05 09:49:23 by ttshivhu          #+#    #+#             */
+/*   Updated: 2017/12/05 09:51:15 by ttshivhu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "npuzzle.h"
 
-void    push(t_closed **head, int **matrix, int size)
+void		push(t_closed **head, int **matrix, int size)
 {
-    t_closed *new_node;
+	t_closed *new_node;
 
     new_node = malloc(sizeof(t_closed));
     new_node->matrix = (int **)malloc(sizeof(int *) * size);
@@ -15,48 +27,20 @@ void    push(t_closed **head, int **matrix, int size)
     }
     new_node->next = *head;
     *head = new_node;
-
-    //if (head != NULL)
-      //  return ;
-/*
-    if (*head == NULL)
-    {
-        new_node->next = *head;
-        *head = new_node;
-    }
-    else
-    {
-        temp = *head;
-        if(temp->priority > new_node->priority)
-        {
-            *head = new_node;
-            new_node->next = temp;
-            return ;
-        }
-        while (temp->next != NULL && temp->next->priority < new_node->priority)
-        {
-            temp = temp->next;
-        }
-        if (temp->next != NULL)
-        {
-            new_node->next = temp->next;
-        }
-        temp->next = new_node;
-    }*/
 }
 
-int     compare_grids(int **a, int **b, int size)
+int			compare_grids(int **a, int **b, int size)
 {
-    for (int y = 0; y < size; y++)
-        for (int x = 0; x < size; x++)
+	for (int y = 0; y < size; y++)
+		for (int x = 0; x < size; x++)
             if (a[y][x] != b[y][x])
                 return (0);
     return (1);
 }
 
-int     closed(t_closed *head, int **grid, int size)
+int			closed(t_closed *head, int **grid, int size)
 {
-    t_closed *current = head;
+	t_closed *current = head;
 
     while (current != NULL)
     {
