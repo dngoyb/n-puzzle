@@ -28,27 +28,27 @@ t_queue		init()
 
 void		ft_penqueue(t_queue *q, t_node *node, int prty)
 {
-    t_qnode *newNode = malloc(sizeof(t_qnode));
-    newNode->node = node;
-    newNode->next = NULL;
-    newNode->priority = prty;
+    t_qnode *new_node = malloc(sizeof(t_qnode));
+    new_node->node = node;
+    new_node->next = NULL;
+    new_node->priority = prty;
 
     if (ft_is_empty(q))
-        q->top = newNode;
+        q->top = new_node;
     else
     {
         t_qnode *temp = q->top;
-        if(temp->priority > newNode->priority)
+        if(temp->priority > new_node->priority)
         {
-            q->top = newNode;
-            newNode->next = temp;
+            q->top = new_node;
+            new_node->next = temp;
             return ;
         }
-        while (temp->next != NULL && temp->next->priority < newNode->priority)
+        while (temp->next != NULL && temp->next->priority < new_node->priority)
 			temp = temp->next;
         if (temp->next != NULL)
-			newNode->next = temp->next;
-        temp->next = newNode;
+			new_node->next = temp->next;
+        temp->next = new_node;
     }
 }
 
@@ -57,8 +57,8 @@ t_node		*dequeue(t_queue *q)
 	if (ft_is_empty(q))
 		return (NULL);
     t_qnode *temp = q->top;
-    t_node *tempNum = q->top->node;
+    t_node *temp_node = q->top->node;
     q->top = q->top->next;
     free(temp);
-    return tempNum;
+    return temp_node;
 }
