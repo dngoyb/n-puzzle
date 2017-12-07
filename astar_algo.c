@@ -44,7 +44,6 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
         min = dequeue(&queue);
         if (min->cost == 0)
         {
-            
             ft_constract_path(min, size);
             clock_t fuck = clock();
             spent = (double)(fuck - start) / CLOCKS_PER_SEC;

@@ -107,6 +107,7 @@ int main(int c, char **av)
     
     size = 3;
     initial = NULL;
+    srand((unsigned)time(NULL));
     if (c >= 2 && c <= 3)
         initial = (c == 2) ? read_file(&size, av[1], &g_x, &g_y) : read_file(&size, av[2], &g_x, &g_y);
     type = (c == 3) ? ft_atoi(ft_strchr(av[1], 'h') + 1) : 0;
