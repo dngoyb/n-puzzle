@@ -32,7 +32,7 @@ int        **random_puzzle(int *size, int *ix, int *iy)
         {
             for (int j = 0; j < 3; j++)
             {
-                srand((unsigned)time(0) * times * i * j);
+                srand((unsigned)time(0) * i * j);
                 ft_swap(&(puzzle[i][j]), &(puzzle[rand() % (i + 1)][rand() % (j + 1)]));
             }
         }
