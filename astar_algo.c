@@ -25,18 +25,31 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
     t_node  *min;
     t_node  *child;
     t_queue queue;
+    clock_t start;
+    double  spent;
+    int     opens;
+    int     memory;
+
+    start = clock();
     t_closed    *close = NULL;
     int row[] = {1, 0, -1, 0};
     int col[] = {0, -1, 0, 1};
 
     queue = init();
+    opens = 1;
+    memory = 1;
     ft_penqueue(&queue, i_node, i_node->cost);
     while (!ft_is_empty(&queue))
     {
         min = dequeue(&queue);
         if (min->cost == 0)
         {
+            
             ft_constract_path(min, size);
+            clock_t fuck = clock();
+            spent = (double)(fuck - start) / CLOCKS_PER_SEC;
+
+            printf("-----------\nTime spent : %f s\nTime complexity: %d\nSize complexity: %d\n", spent, opens, memory);
             break ;
         }
         push(&close, min->matrix, size);
@@ -50,8 +63,12 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
                                       min->level + 1, min, size);
                 child->cost = cost_h(child->matrix, final, type, size);
                 if (!closed(close, child->matrix, size))
+                {
                     ft_penqueue(&queue, child, child->cost + min->level);
+                    memory++;
+                }
             }
         }
+        opens++;
     }
 }

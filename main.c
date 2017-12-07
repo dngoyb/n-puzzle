@@ -25,7 +25,6 @@ int			printMatrix(int **mat, int size)
 {
     static int move = 0;
 
-    printf("\e[1;1H\e[2J");
 	printf("-----------\n");
     for (int i = 0; i < size; i++)
     {
@@ -39,7 +38,6 @@ int			printMatrix(int **mat, int size)
         printf("\n");
     }
     printf("-----------\nMove: %5d\n", move++);
-    usleep(300000);
     return (0);
 }
 
@@ -106,7 +104,7 @@ int main(int c, char **av)
     int     g_x;
     int     g_y;
     int     type;
-
+    
     size = 3;
     initial = NULL;
     if (c >= 2 && c <= 3)
