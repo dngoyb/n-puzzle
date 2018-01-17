@@ -47,7 +47,6 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
             ft_constract_path(min, size);
             clock_t fuck = clock();
             spent = (double)(fuck - start) / CLOCKS_PER_SEC;
-
             printf("-----------\nTime spent : %f s\nTime complexity: %d\nSize complexity: %d\n", spent, opens, memory);
             break ;
         }

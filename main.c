@@ -89,7 +89,7 @@ int     cost_h(int **grid, int **final, int type, int size)
     {
         if (type == 1)
             cost = missplaced(grid, final, size);
-		else
+		else if (type == 2)
 			cost = linearconflict(grid, final, size);
     }
     return (cost);

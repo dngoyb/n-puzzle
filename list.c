@@ -16,10 +16,10 @@ void		push(t_closed **head, int **matrix, int size)
 {
 	t_closed *new_node;
 
-    new_node = malloc(sizeof(t_closed));
+    new_node = (t_closed *)malloc(sizeof(t_closed));
     new_node->matrix = (int **)malloc(sizeof(int *) * size);
     for (int i=0; i < size; i++)
-        new_node->matrix[i] = malloc(sizeof(int));
+        new_node->matrix[i] = (int *)malloc(sizeof(int));
     for (int y = 0; y < size; y++)
     {
         for (int x = 0; x < size; x++)

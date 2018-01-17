@@ -21,14 +21,14 @@ t_queue		init()
 {
 	t_queue *tmp;
 	
-	tmp = malloc(sizeof(t_queue));
+	tmp = (t_queue *)malloc(sizeof(t_queue));
     tmp->top = NULL;
     return (*tmp);
 }
 
 void		ft_penqueue(t_queue *q, t_node *node, int prty)
 {
-    t_qnode *new_node = malloc(sizeof(t_qnode));
+    t_qnode *new_node = (t_qnode *)malloc(sizeof(t_qnode));
     new_node->node = node;
     new_node->next = NULL;
     new_node->priority = prty;
