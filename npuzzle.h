@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 11:59:24 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:09:05 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void                ft_penqueue(t_queue *q, t_node *node, int prty);
 t_node              *dequeue(t_queue *q);
 int                 manhattan(int **grid, int **final, int size);
 int                 missplaced(int **initial, int **final, int size);
-int                 linearconflict(int **grid, int **final, int size);
 
 int                 compare_grids(int **a, int **b, int size);
 

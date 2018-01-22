@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:20:23 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 12:50:05 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:07:47 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void		ft_swap(int *a, int *b)
 int			printMatrix(int **mat, int size)
 {
     static int move = 0;
-
 	printf("-----------\n");
     for (int i = 0; i < size; i++)
     {
@@ -84,13 +83,13 @@ int     cost_h(int **grid, int **final, int type, int size)
 
     cost = 0;
     if (type <= 0 || type > 2)
-           cost = manhattan(grid, final, size);
+           cost = manhattan(grid, final, size) + missplaced(grid, final, size);
     else
     {
         if (type == 1)
-            cost = missplaced(grid, final, size);
+            cost = manhattan(grid, final, size);
 		else if (type == 2)
-			cost = linearconflict(grid, final, size);
+			cost = missplaced(grid, final, size);
     }
     return (cost);
 }

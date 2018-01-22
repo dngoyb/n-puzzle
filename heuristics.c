@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 14:33:59 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 14:34:01 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/01/22 14:08:46 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,6 @@ int		manhattan(int **grid, int **final, int size)
         }
     }
     return (comp);
-}
-
-int		linearconflict(int **grid, int **final, int size)
-{
-    (void)grid;
-    (void)final;
-    (void)size;
-    printf("Requested a non existing heurastics\n");
-    return (0);
 }
 
 int     missplaced(int **initial, int **final, int size)
