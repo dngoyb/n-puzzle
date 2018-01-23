@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:40:00 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 10:40:10 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/01/23 09:58:57 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
     opens = 1;
     memory = 1;
     ft_penqueue(&queue, i_node, i_node->cost);
-    while (!ft_is_empty(&queue))
+    while (queue.top != NULL)
     {
         min = dequeue(&queue);
         if (min->cost == 0)

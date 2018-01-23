@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/01/22 14:09:05 by ngbanza          ###   ########.fr       */
+/*   Updated: 2018/01/23 09:59:45 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct      s_closed
 }                   t_closed;
 
 t_queue             init();
-int                 ft_is_empty(t_queue *q);
 void                ft_penqueue(t_queue *q, t_node *node, int prty);
 t_node              *dequeue(t_queue *q);
 int                 manhattan(int **grid, int **final, int size);

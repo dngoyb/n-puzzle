@@ -6,16 +6,11 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:47:04 by ttshivhu          #+#    #+#             */
-/*   Updated: 2017/12/05 09:49:17 by ttshivhu         ###   ########.fr       */
+/*   Updated: 2018/01/23 10:00:56 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
-
-int			ft_is_empty(t_queue *q)
-{
-	return (q->top == NULL);
-}
 
 t_queue		init()
 {
@@ -33,7 +28,7 @@ void		ft_penqueue(t_queue *q, t_node *node, int prty)
     new_node->next = NULL;
     new_node->priority = prty;
 
-    if (ft_is_empty(q))
+    if (!q->top)
         q->top = new_node;
     else
     {
@@ -54,7 +49,7 @@ void		ft_penqueue(t_queue *q, t_node *node, int prty)
 
 t_node		*dequeue(t_queue *q)
 {
-	if (ft_is_empty(q))
+	if (!q->top)
 		return (NULL);
     t_qnode *temp = q->top;
     t_node *temp_node = q->top->node;
