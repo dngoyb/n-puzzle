@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:45:30 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/01/23 09:59:45 by ngbanza          ###   ########.fr       */
+/*   Updated: 2018/01/23 10:20:06 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,14 @@ typedef struct      s_qnode
     struct s_qnode  *next;
 }                   t_qnode;
 
-typedef struct      s_queue
-{
-    t_qnode         *top;
-}                   t_queue;
-
 typedef struct      s_closed
 {
     int             **matrix;
     struct s_closed *next;
 }                   t_closed;
 
-t_queue             init();
-void                ft_penqueue(t_queue *q, t_node *node, int prty);
-t_node              *dequeue(t_queue *q);
+void                ft_penqueue(t_qnode **q, t_node *node, int prty);
+t_node              *dequeue(t_qnode **q);
 int                 manhattan(int **grid, int **final, int size);
 int                 missplaced(int **initial, int **final, int size);
 

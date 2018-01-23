@@ -6,36 +6,27 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 09:47:04 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/01/23 10:00:56 by ngbanza          ###   ########.fr       */
+/*   Updated: 2018/01/23 10:20:00 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "npuzzle.h"
 
-t_queue		init()
-{
-	t_queue *tmp;
-	
-	tmp = (t_queue *)malloc(sizeof(t_queue));
-    tmp->top = NULL;
-    return (*tmp);
-}
-
-void		ft_penqueue(t_queue *q, t_node *node, int prty)
+void		ft_penqueue(t_qnode **q, t_node *node, int prty)
 {
     t_qnode *new_node = (t_qnode *)malloc(sizeof(t_qnode));
     new_node->node = node;
     new_node->next = NULL;
     new_node->priority = prty;
 
-    if (!q->top)
-        q->top = new_node;
+    if (!*q)
+        *q = new_node;
     else
     {
-        t_qnode *temp = q->top;
+        t_qnode *temp = *q;
         if(temp->priority > new_node->priority)
         {
-            q->top = new_node;
+            *q = new_node;
             new_node->next = temp;
             return ;
         }
@@ -47,13 +38,13 @@ void		ft_penqueue(t_queue *q, t_node *node, int prty)
     }
 }
 
-t_node		*dequeue(t_queue *q)
+t_node		*dequeue(t_qnode **q)
 {
-	if (!q->top)
+	if (!*q)
 		return (NULL);
-    t_qnode *temp = q->top;
-    t_node *temp_node = q->top->node;
-    q->top = q->top->next;
+    t_qnode *temp = *q;
+    t_node *temp_node = (*q)->node;
+    *q = (*q)->next;
     free(temp);
     return temp_node;
 }

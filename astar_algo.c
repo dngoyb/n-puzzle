@@ -6,7 +6,7 @@
 /*   By: ttshivhu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 10:40:00 by ttshivhu          #+#    #+#             */
-/*   Updated: 2018/01/23 09:58:57 by ngbanza          ###   ########.fr       */
+/*   Updated: 2018/01/23 10:20:03 by ngbanza          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
 {
     t_node  *min;
     t_node  *child;
-    t_queue queue;
+    t_qnode *queue;
     clock_t start;
     double  spent;
     int     opens;
@@ -35,11 +35,11 @@ void        astar_algo(int **final, t_node *i_node, int size, int type)
     int row[] = {1, 0, -1, 0};
     int col[] = {0, -1, 0, 1};
 
-    queue = init();
+    queue = NULL;
     opens = 1;
     memory = 1;
     ft_penqueue(&queue, i_node, i_node->cost);
-    while (queue.top != NULL)
+    while (queue != NULL)
     {
         min = dequeue(&queue);
         if (min->cost == 0)
