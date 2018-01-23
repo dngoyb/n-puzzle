@@ -17,3 +17,9 @@ make
 ```
 ./npuzzle tests/puzzle1.txt
 ```
+
+## Heuristics
+
+- Manhattan Distance
+- Missplaced Tiles
+- Manhattan D + Missplaced
